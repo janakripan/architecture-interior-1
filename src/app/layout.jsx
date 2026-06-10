@@ -12,6 +12,8 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas",
 });
 
+import Providers from "@/components/Providers";
+
 export const metadata = {
   title: "EVER GREEN ARCHITEX",
   description: "Luxury architecture firm meets premium design magazine.",
@@ -21,7 +23,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans bg-[var(--background)] text-[var(--foreground)]">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

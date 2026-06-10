@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 const stats = [
@@ -38,25 +38,34 @@ const stats = [
   }
 ];
 
+const ease = [0.22, 1, 0.36, 1];
+
 export default function ProfessionalService() {
   return (
-    <section className="bg-[var(--surface)] section-spacing section-padding text-[var(--text-primary)]">
+    <m.section 
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease }}
+      className="bg-[var(--surface)] section-spacing section-padding text-[var(--text-primary)]"
+    >
       <div className="max-w-content w-full">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10 mb-10 lg:mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+          <m.h2 
+            initial={{ opacity: 0, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.9, ease }}
             className="font-bebas heading-section leading-[0.95]"
+            style={{ letterSpacing: '-0.02em' }}
           >
             PROFESSIONAL<br/><span className="font-bold tracking-wide" style={{ WebkitTextStroke: '1px white' }}>SERVICE.</span>
-          </motion.h2>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+          </m.h2>
+          <m.div 
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease, delay: 0.15 }}
             className="lg:w-1/2 flex items-start lg:justify-end text-[var(--text-primary)] text-body font-medium"
           >
             <p className="max-w-[280px] leading-relaxed">
@@ -64,7 +73,7 @@ export default function ProfessionalService() {
               Way In Creating Unique Real<br/>
               Estate For Utah Residents.
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-[900px] aspect-square mx-auto mb-10">
@@ -73,12 +82,12 @@ export default function ProfessionalService() {
           <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-y-1/2 hidden md:block z-10" />
 
           {stats.map((stat, idx) => (
-            <motion.div 
+            <m.div 
               key={stat.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease, delay: idx * 0.08 }}
               className="relative p-6 lg:p-10 flex flex-col justify-between aspect-square w-full mx-auto"
             >
               {/* Mobile dividers */}
@@ -87,8 +96,12 @@ export default function ProfessionalService() {
               )}
               
               <div className="flex items-start z-20">
-                <h4 className="text-[13px] lg:text-[15px] font-medium leading-[1.3] text-white">
-                  {stat.title1} <FiArrowUpRight className="inline text-[1em] -mt-0.5 ml-0.5 opacity-90" /><br/>
+                <h4 className="text-[13px] lg:text-[15px] font-medium leading-[1.3] text-white flex items-center group">
+                  {stat.title1} 
+                  <m.div whileHover={{ rotate: 3, scale: 1.08 }} transition={{ duration: 0.25, ease }}>
+                    <FiArrowUpRight className="inline text-[1em] -mt-0.5 ml-0.5 opacity-90 transition-transform" />
+                  </m.div>
+                  <br/>
                   {stat.title2}
                 </h4>
               </div>
@@ -100,37 +113,25 @@ export default function ProfessionalService() {
                   <Counter from={0} to={stat.value} duration={2} />{stat.suffix}
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
-    </section>
+    </m.section>
   );
 }
 
 function Counter({ from, to, duration }) {
-  const [count, setCount] = React.useState(from);
-  
+  const ref = React.useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const count = useMotionValue(from);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
   React.useEffect(() => {
-    let startTime;
-    let animationFrame;
-    
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const percentage = Math.min(progress / (duration * 1000), 1);
-      
-      setCount(Math.floor(from + (to - from) * percentage));
-      
-      if (percentage < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-    
-    animationFrame = requestAnimationFrame(animate);
-    
-    return () => cancelAnimationFrame(animationFrame);
-  }, [from, to, duration]);
-  
-  return <span>{count}</span>;
+    if (inView) {
+      animate(count, to, { duration: duration, ease: "easeOut" });
+    }
+  }, [count, to, duration, inView]);
+
+  return <m.span ref={ref}>{rounded}</m.span>;
 }

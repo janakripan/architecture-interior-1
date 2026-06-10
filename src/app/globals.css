@@ -44,6 +44,8 @@
     line-height: 0.85;
     letter-spacing: -0.03em;
     text-transform: uppercase;
+    transform: scaleX(1.1);
+    transform-origin: left center;
   }
 
   .heading-large {
@@ -51,6 +53,8 @@
     line-height: 0.9;
     letter-spacing: -0.03em;
     text-transform: uppercase;
+    transform: scaleX(1.1);
+    transform-origin: center center;
   }
 
   .heading-section {
@@ -58,6 +62,8 @@
     line-height: 1;
     letter-spacing: -0.03em;
     text-transform: uppercase;
+    transform: scaleX(1.1);
+    transform-origin: left center;
   }
 
   .heading-card {

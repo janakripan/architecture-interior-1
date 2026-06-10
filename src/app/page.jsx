@@ -6,18 +6,21 @@ import StatementBanner from "@/components/StatementBanner";
 import ResidentialHome from "@/components/ResidentialHome";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
 export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden">
-      <Header />
-      <Hero />
-      <LatestProjects />
-      <ProfessionalService />
-      <StatementBanner />
-      <ResidentialHome />
-      <CTASection />
-      <Footer />
+      <PageTransition>
+        <Header />
+        <Hero />
+        <LatestProjects />
+        <ProfessionalService />
+        <StatementBanner />
+        <ResidentialHome />
+        <CTASection />
+        <Footer />
+      </PageTransition>
     </main>
   );
 }
