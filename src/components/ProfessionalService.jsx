@@ -1,0 +1,136 @@
+"use client";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FiArrowUpRight } from 'react-icons/fi';
+
+const stats = [
+  {
+    id: 1,
+    title1: "Years in",
+    title2: "Business",
+    desc: "Transforming Spaces,\nInspiring Lives: 23 Years Of\nArchitectural Excellence.",
+    value: 23,
+    suffix: ""
+  },
+  {
+    id: 2,
+    title1: "Award",
+    title2: "Gain",
+    desc: "Recognized For Excellence:\n36 Prestigious Awards And\nCounting.",
+    value: 36,
+    suffix: ""
+  },
+  {
+    id: 3,
+    title1: "Years in",
+    title2: "Business",
+    desc: "Half A Century Of\nArchitectural Innovation\nAnd Expertise.",
+    value: 50,
+    suffix: ""
+  },
+  {
+    id: 4,
+    title1: "Total Team",
+    title2: "Members",
+    desc: "A Dedicated Team Of 37\nProfessionals Driving\nDesign Excellence.",
+    value: 37,
+    suffix: ""
+  }
+];
+
+export default function ProfessionalService() {
+  return (
+    <section className="bg-[var(--surface)] section-spacing section-padding text-[var(--text-primary)]">
+      <div className="max-w-content w-full">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10 mb-10 lg:mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="font-bebas heading-section leading-[0.95]"
+          >
+            PROFESSIONAL<br/><span className="font-bold tracking-wide" style={{ WebkitTextStroke: '1px white' }}>SERVICE.</span>
+          </motion.h2>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:w-1/2 flex items-start lg:justify-end text-[var(--text-primary)] text-body font-medium"
+          >
+            <p className="max-w-[280px] leading-relaxed">
+              Orix Property Is Leading The<br/>
+              Way In Creating Unique Real<br/>
+              Estate For Utah Residents.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-[900px] aspect-square mx-auto mb-10">
+          {/* Centered cross dividers that fade out at the edges for desktop */}
+          <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/80 to-transparent -translate-x-1/2 hidden md:block z-10" />
+          <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-y-1/2 hidden md:block z-10" />
+
+          {stats.map((stat, idx) => (
+            <motion.div 
+              key={stat.id}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              className="relative p-6 lg:p-10 flex flex-col justify-between aspect-square w-full mx-auto"
+            >
+              {/* Mobile dividers */}
+              {idx < 3 && (
+                 <div className="absolute left-0 right-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent md:hidden" />
+              )}
+              
+              <div className="flex items-start z-20">
+                <h4 className="text-[13px] lg:text-[15px] font-medium leading-[1.3] text-white">
+                  {stat.title1} <FiArrowUpRight className="inline text-[1em] -mt-0.5 ml-0.5 opacity-90" /><br/>
+                  {stat.title2}
+                </h4>
+              </div>
+              <div className="flex items-end justify-between mt-8 lg:mt-0 w-full z-20">
+                <p className="text-[10px] lg:text-[11px] text-white/70 normal-case tracking-normal max-w-[140px] lg:max-w-[180px] leading-[1.6] whitespace-pre-line pb-1">
+                  {stat.desc}
+                </p>
+                <div className="font-sans font-bold text-white leading-[0.8] tracking-tight translate-y-1 lg:translate-y-2 drop-shadow-sm" style={{ fontSize: 'clamp(60px, 8vw, 120px)', WebkitTextStroke: '2px white' }}>
+                  <Counter from={0} to={stat.value} duration={2} />{stat.suffix}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Counter({ from, to, duration }) {
+  const [count, setCount] = React.useState(from);
+  
+  React.useEffect(() => {
+    let startTime;
+    let animationFrame;
+    
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percentage = Math.min(progress / (duration * 1000), 1);
+      
+      setCount(Math.floor(from + (to - from) * percentage));
+      
+      if (percentage < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+    
+    animationFrame = requestAnimationFrame(animate);
+    
+    return () => cancelAnimationFrame(animationFrame);
+  }, [from, to, duration]);
+  
+  return <span>{count}</span>;
+}
