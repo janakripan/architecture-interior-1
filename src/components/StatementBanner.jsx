@@ -7,7 +7,7 @@ const ease = [0.22, 1, 0.36, 1];
 
 export default function StatementBanner() {
   return (
-    <section className="relative w-full h-[700px] overflow-hidden">
+    <section className="relative w-full h-[500px] md:h-[700px] overflow-hidden">
       <m.div 
         initial={{ opacity: 0, scale: 1.08 }}
         whileInView={{ opacity: 1, scale: 1 }}

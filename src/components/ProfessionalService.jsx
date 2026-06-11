@@ -83,7 +83,7 @@ export default function ProfessionalService() {
           </m.div>
         </div>
 
-        <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-[900px] aspect-square mx-auto mb-10">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-[900px] md:aspect-square mx-auto mb-10">
           {/* Centered cross dividers that fade out at the edges for desktop */}
           <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 hidden md:block z-10 overflow-hidden">
             <m.div style={{ scaleY: scrollYProgress, transformOrigin: 'top' }} className="w-full h-full bg-gradient-to-b from-transparent via-white/80 to-transparent" />
