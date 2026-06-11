@@ -12,6 +12,7 @@ export default function ContactPage() {
         <PageHeader 
           title={<>Get In <br/>Touch.</>}
           subtitle="Start a dialogue with our lead architects. We are currently accepting select commissions globally."
+          imageSrc="/images/proj_greek_revival_1781082791293.png"
         />
         
         <section className="py-24 px-6 md:px-12 lg:px-20 bg-[var(--background)]">

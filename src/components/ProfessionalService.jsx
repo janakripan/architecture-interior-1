@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { m, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+import { m, useMotionValue, useTransform, animate, useInView, useScroll } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 const stats = [
@@ -41,8 +41,15 @@ const stats = [
 const ease = [0.22, 1, 0.36, 1];
 
 export default function ProfessionalService() {
+  const containerRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 80%", "center center"]
+  });
+
   return (
     <m.section 
+      ref={containerRef}
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -78,8 +85,12 @@ export default function ProfessionalService() {
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-[900px] aspect-square mx-auto mb-10">
           {/* Centered cross dividers that fade out at the edges for desktop */}
-          <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-gradient-to-b from-transparent via-white/80 to-transparent -translate-x-1/2 hidden md:block z-10" />
-          <div className="absolute left-0 right-0 top-1/2 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-y-1/2 hidden md:block z-10" />
+          <div className="absolute top-0 bottom-0 left-1/2 w-[1px] -translate-x-1/2 hidden md:block z-10 overflow-hidden">
+            <m.div style={{ scaleY: scrollYProgress, transformOrigin: 'top' }} className="w-full h-full bg-gradient-to-b from-transparent via-white/80 to-transparent" />
+          </div>
+          <div className="absolute left-0 right-0 top-1/2 h-[1px] -translate-y-1/2 hidden md:block z-10 overflow-hidden">
+            <m.div style={{ scaleX: scrollYProgress, transformOrigin: 'left' }} className="w-full h-full bg-gradient-to-r from-transparent via-white/80 to-transparent" />
+          </div>
 
           {stats.map((stat, idx) => (
             <m.div 

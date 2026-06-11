@@ -17,8 +17,7 @@ export default function StudioStory() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease }}
-            className="font-bebas text-4xl tracking-wide uppercase text-white/50"
-            style={{ transform: 'scaleX(1.1)', transformOrigin: 'left center' }}
+            className="font-bebas heading-section text-white/50"
           >
             Our Story
           </m.h2>

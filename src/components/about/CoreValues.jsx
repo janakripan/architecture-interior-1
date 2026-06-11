@@ -19,8 +19,7 @@ export default function CoreValues() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease }}
-          className="font-bebas text-5xl md:text-7xl mb-16 text-white"
-          style={{ transform: 'scaleX(1.1)', transformOrigin: 'left center' }}
+          className="font-bebas heading-large mb-16 text-white"
         >
           Core Values
         </m.h2>

@@ -16,8 +16,7 @@ export default function DesignPhilosophy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease }}
-          className="font-bebas text-5xl md:text-7xl text-white text-center"
-          style={{ transform: 'scaleX(1.1)', transformOrigin: 'center center' }}
+          className="font-bebas heading-large text-white text-center"
         >
           Design Philosophy
         </m.h2>

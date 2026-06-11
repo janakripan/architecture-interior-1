@@ -23,8 +23,7 @@ export default function Team() {
           className="mb-16 md:mb-24 flex justify-between items-end"
         >
           <h2 
-            className="font-bebas text-5xl md:text-7xl text-white"
-            style={{ transform: 'scaleX(1.1)', transformOrigin: 'left center' }}
+            className="font-bebas heading-large text-white"
           >
             Leadership
           </h2>

@@ -108,7 +108,7 @@ export default function LatestProjects() {
                       </div>
                     </div>
                   ) : (
-                    <div className="w-full h-full relative overflow-hidden bg-[var(--surface)]">
+                    <div className="w-full h-full relative overflow-hidden bg-[var(--surface)] group">
                       <m.div variants={imageVariants} className="w-full h-full">
                         <Image 
                           src={proj.src} 
@@ -116,6 +116,23 @@ export default function LatestProjects() {
                           fill 
                           className="object-cover"
                         />
+                      </m.div>
+                      <m.div 
+                        variants={{
+                          rest: { opacity: 0 },
+                          hover: { opacity: 1, transition: { duration: 0.4, ease } }
+                        }}
+                        className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col justify-end p-4 lg:p-6"
+                      >
+                        <m.h3 
+                          variants={{
+                            rest: { y: 20 },
+                            hover: { y: 0, transition: { duration: 0.5, ease } }
+                          }}
+                          className="font-sans font-bold text-white text-lg lg:text-xl"
+                        >
+                          {proj.title}
+                        </m.h3>
                       </m.div>
                     </div>
                   )}

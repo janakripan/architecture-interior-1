@@ -26,8 +26,7 @@ export default function PageHeader({ title, subtitle, imageSrc, imageHeight = "6
               hidden: { opacity: 0, y: 60 },
               show: { opacity: 1, y: 0, transition: { duration: 1, ease } }
             }}
-            className="font-bebas text-[clamp(60px,10vw,140px)] leading-[0.85] tracking-tight uppercase"
-            style={{ transform: 'scaleX(1.1)', transformOrigin: 'left center' }}
+            className="font-bebas heading-hero text-white"
           >
             {title}
           </m.h1>

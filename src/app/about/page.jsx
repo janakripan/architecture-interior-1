@@ -15,6 +15,7 @@ export default function AboutPage() {
         <PageHeader 
           title={<>The <br/>Studio.</>}
           subtitle="A multidisciplinary architecture and design firm dedicated to creating timeless spaces."
+          imageSrc="/images/statement_bg_1781082710020.png"
         />
         <StudioStory />
         <CoreValues />

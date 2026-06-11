@@ -26,19 +26,33 @@ export default function StatementBanner() {
       
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center pt-20">
         <m.div 
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.9, ease }}
-          className="font-bebas text-center flex flex-col items-center"
-          style={{ fontSize: 'clamp(60px, 10vw, 130px)', lineHeight: 0.85, letterSpacing: '-0.02em' }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.1 } }
+          }}
+          className="font-bebas text-center flex flex-col items-center heading-hero text-white"
         >
-          <div className="relative z-20 font-bold drop-shadow-[0_10px_10px_rgba(0,0,0,0.9)] text-white">
+          <m.div 
+            variants={{
+              hidden: { opacity: 0, y: 80 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } }
+            }}
+            className="relative z-20 font-bold drop-shadow-[0_10px_10px_rgba(0,0,0,0.9)]"
+          >
             QUIET
-          </div>
-          <div className="relative z-10 font-bold mt-0 bg-linear-to-b from-black/80 via-[#F5F5F5] via-40% to-text-primary bg-clip-text text-transparent">
+          </m.div>
+          <m.div 
+            variants={{
+              hidden: { opacity: 0, y: 80 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } }
+            }}
+            className="relative z-10 font-bold mt-0 bg-linear-to-b from-black/80 via-[#F5F5F5] via-40% to-text-primary bg-clip-text text-transparent"
+          >
             SPACE
-          </div>
+          </m.div>
         </m.div>
         
         <m.p

@@ -27,8 +27,7 @@ export default function ProcessTimeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease }}
-          className="font-bebas text-5xl md:text-7xl mb-24 text-white text-center"
-          style={{ transform: 'scaleX(1.1)', transformOrigin: 'center center' }}
+          className="font-bebas heading-large mb-24 text-white text-center"
         >
           Our Process
         </m.h2>

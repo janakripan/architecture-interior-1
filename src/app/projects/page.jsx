@@ -11,6 +11,7 @@ export default function ProjectsPage() {
         <PageHeader 
           title={<>Selected <br/>Works.</>}
           subtitle="An archive of our most significant architectural and interior design projects spanning the globe."
+          imageSrc="/images/proj_post_modern_1781082805725.png"
         />
         <ProjectsArchive />
         <CTASection />

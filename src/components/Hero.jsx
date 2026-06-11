@@ -25,9 +25,9 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[100svh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
       <m.div 
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease }}
+        initial={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)", scale: 1.1 }}
+        animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", scale: 1 }}
+        transition={{ duration: 1.4, ease }}
         className="absolute inset-0 z-0 overflow-hidden"
       >
         <Image 

@@ -12,6 +12,7 @@ export default function ServicesPage() {
         <PageHeader 
           title={<>Design <br/>Services.</>}
           subtitle="Comprehensive architectural and interior design solutions tailored to visionary clients."
+          imageSrc="/images/residential_bg_1781082724078.png"
         />
         <ServicesOverview />
         <ProcessTimeline />
