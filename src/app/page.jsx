@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LatestProjects from "@/components/LatestProjects";
 import ProfessionalService from "@/components/ProfessionalService";
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden">
       <PageTransition>
-        <Header />
         <Hero />
         <LatestProjects />
         <ProfessionalService />

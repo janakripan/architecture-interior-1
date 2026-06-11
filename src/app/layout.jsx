@@ -13,6 +13,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 import Providers from "@/components/Providers";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "EVER GREEN ARCHITEX",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans bg-[var(--background)] text-[var(--foreground)]">
         <Providers>
+          <Header />
           {children}
         </Providers>
       </body>
