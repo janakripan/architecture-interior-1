@@ -13,7 +13,7 @@ export default function CTASection() {
       className="bg-[var(--surface)] w-full block"
       style={{
         height: '420px',
-        overflow: 'hidden',
+        overflow: 'clip',
         paddingLeft: '28px',
         paddingRight: '28px',
         paddingTop: '18px',

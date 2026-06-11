@@ -22,8 +22,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bebasNeue.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-[var(--background)] text-[var(--foreground)]">
+    <html lang="en" className={`${inter.variable} ${bebasNeue.variable} antialiased`}>
+      <body className="flex flex-col font-sans bg-[var(--background)] text-[var(--foreground)] min-h-screen">
         <Providers>
           <Header />
           {children}
